@@ -1,7 +1,5 @@
-import { Inter } from 'next/font/google'
-import './globals.css'
-
-const inter = Inter({ subsets: ['latin'] })
+import '../../public/uikit/dist/css/uikit.custom-theme.min.css';
+import Script from 'next/script';
 
 export const metadata = {
   title: 'MD | Front-End Developer',
@@ -11,7 +9,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body>{children}</body>
+      <Script src='/uikit/dist/js/uikit.min.js'></Script>
+      <Script src='/uikit/dist/js/uikit-icons.min.js'></Script>
     </html>
   )
 }
