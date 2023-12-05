@@ -1,0 +1,233 @@
+//
+// Component: Section
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+@section-padding-vertical:                        @global-medium-margin;
+@section-padding-vertical-m:                      @global-large-margin;
+
+@section-xsmall-padding-vertical:                 @global-margin;
+
+@section-small-padding-vertical:                  @global-medium-margin;
+
+@section-large-padding-vertical:                  @global-large-margin;
+@section-large-padding-vertical-m:                @global-xlarge-margin;
+
+@section-xlarge-padding-vertical:                 @global-xlarge-margin;
+@section-xlarge-padding-vertical-m:               (@global-large-margin + @global-xlarge-margin);
+
+@section-default-background:                      @global-background;
+
+@section-muted-background:                        @global-muted-background;
+
+@section-primary-background:                      @global-primary-background;
+@section-primary-color-mode:                      light;
+
+@section-secondary-background:                    @global-secondary-background;
+@section-secondary-color-mode:                    light;
+
+
+// Component
+// ========================================================================
+
+.hook-section() {}
+
+
+// Style modifiers
+// ========================================================================
+
+.hook-section-default() {}
+
+.hook-section-muted() {}
+
+.hook-section-primary() {}
+
+.hook-section-secondary() {}
+
+
+// Miscellaneous
+// ========================================================================
+
+.hook-section-misc() {
+    .custom-card{
+        box-shadow: 20px 20px 50px rgba(0,0,0,0.5);
+        overflow: hidden;
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        color: #fff;
+    }
+    .card-bottom{
+        bottom:60px !important;
+    }
+    .resize-none{
+        resize: none;
+    }
+    .margin-top-small{
+        margin-top: 20px !important;
+    }
+    .footer{
+        background-color: #031321;
+    }
+    .social-icon{
+        width: 50px; 
+        background: #122e52;
+    }
+    .text-blue{
+        color: #2196f3 !important;
+    }
+    .button-reset{
+        background: none;
+        border: none;
+    }
+    .neon-button > a{
+        position: relative;
+        display: inline-block;
+        padding: 15px 30px;
+        color:#2196f3;
+        text-transform: uppercase;
+        letter-spacing: 4px;
+        text-decoration: none;
+        font-size: 24px;
+        overflow: hidden;
+        transition: 0.2s;
+    }
+    .neon-button > a:hover{
+        color: #255784;
+        background: #2196f3;
+        box-shadow: 0 0 10px #2196f3, 0 0 40px #2196f3, 0 0 80px #2196f3;
+        transition-delay: 1s;
+    }
+    .neon-button > a span{
+        position: absolute;
+        display: block;
+    }
+    .neon-button > a span:nth-child(1){
+        top:0;
+        left: -100%;
+        width: 100%;
+        height: 2px;
+        background: linear-gradient(90deg,transparent,#2196f3);
+    }
+    .neon-button > a:hover span:nth-child(1){
+        left: 100%;
+        transition: 1s;
+    }
+    .neon-button > a span:nth-child(2){
+        top: -100%;
+        right: 0;
+        width: 2px;
+        height: 100%;
+        background: linear-gradient(180deg,transparent,#2196f3);
+    }
+    .neon-button > a:hover span:nth-child(2){
+        top: 100%;
+        transition: 1s;
+        transition-delay: 0.25s;
+    }
+    .neon-button > a span:nth-child(3){
+        bottom:0;
+        right: -100%;
+        width: 100%;
+        height: 2px;
+        background: linear-gradient(270deg,transparent,#2196f3);
+    }
+    .neon-button > a:hover span:nth-child(3){
+        right: 100%;
+        transition: 1s;
+        transition-delay: 0.50s;
+    }
+    .neon-button > a span:nth-child(4){
+        bottom: -100%;
+        left: 0;
+        width: 2px;
+        height: 100%;
+        background: linear-gradient(360deg,transparent,#2196f3);
+    }
+    .neon-button > a:hover span:nth-child(4){
+        bottom: 100%;
+        transition: 1s;
+        transition-delay: 0.75s;
+    }
+    //Timeline Start
+    .timeline{
+        color:#f4f9fd;
+    }
+    .timeline ul{
+        list-style-type:none;
+        border-left:1px solid #2196f3;
+        padding:10px 5px;
+    }
+    .timeline ul li{
+        padding:20px 20px;
+        position:relative;
+        cursor:pointer;
+        transition:.5s;
+    }
+    .timeline ul li span{
+        display:inline-block;
+        background-color:#2196f3;
+        border-radius:25px;
+        padding:2px 5px;
+        font-size:15px;
+        text-align:center;
+    }
+    .timeline ul li .content h3{
+        color:#2196f3;
+        font-size:17px;
+        padding-top:5px;
+    }
+    .timeline ul li .content p{
+        padding:5px 0px 15px 0px;
+        font-size:15px;
+    }
+    .timeline ul li:before{
+        position:absolute;
+        content:'';
+        width:10px;
+        height:10px;
+        background-color:#2196f3;
+        border-radius:50%;
+        left:-11px;
+        top:28px;
+        transition:.5s;
+    }
+    .timeline ul li:hover{
+        background-color:#081d3a;
+    }
+    .timeline ul li:hover:before{
+        background-color:#fff;
+        box-shadow:0px 0px 10px 2px #fff;
+    }
+    //Timeline End
+    .lottie{
+        width: 300px;
+        height: 300px;
+        @media(min-width: @breakpoint-medium){
+            width: 400px;
+            height: 400px;
+        }
+    }
+    @media(min-width: @breakpoint-medium){
+        .card-bottom{
+            bottom:30px !important;
+        }
+        ::-webkit-scrollbar{
+            width: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background-color: none;
+        }
+        ::-webkit-scrollbar-thumb {
+            border-radius: 100vw;
+            background-color: #0d223d;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            border-radius: 100vw;
+            background-color: #113f64;
+        }
+    }
+}

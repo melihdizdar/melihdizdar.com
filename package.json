@@ -6,11 +6,15 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "uk-install": "cd public/uikit && yarn install",
+    "uk-watch": "cd public/uikit && yarn watch",
+    "uk-compile": "cd public/uikit && yarn compile"
   },
   "dependencies": {
+    "next": "14.0.3",
     "react": "^18",
     "react-dom": "^18",
-    "next": "14.0.3"
+    "uikit": "^3.17.11"
   }
 }
