@@ -2510,6 +2510,35 @@ select.uk-form-width-xsmall {
     height: 400px;
   }
 }
+.language-select button {
+  background: none;
+  border: none;
+  color: #fff;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.language-select .uk-card {
+  width: fit-content;
+  left: auto !important;
+  top: 70px !important;
+}
+.language-select .uk-card ul {
+  list-style: none;
+  padding: 15px;
+  margin: 0;
+}
+.language-select .uk-card ul li:not(:first-child) {
+  margin-top: 10px;
+}
+.language-select .uk-card ul a {
+  color: #fff !important;
+}
+.language-select .uk-card ul a:hover {
+  color: #2196f3 !important;
+}
+.language-select .uk-card ul li.active a {
+  color: #2196f3 !important;
+}
 @media (min-width: 960px) {
   .card-bottom {
     bottom: 30px !important;

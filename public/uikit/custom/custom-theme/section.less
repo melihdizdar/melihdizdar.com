@@ -211,6 +211,39 @@
             height: 400px;
         }
     }
+    .language-select{
+        button{
+            background: none;
+            border:none;
+            color:#fff;
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+        .uk-card{
+            width: fit-content;
+            left: auto !important;
+            top: 70px !important;
+            ul{
+                list-style: none;
+                padding: 15px;
+                margin: 0;
+                li:not(:first-child){
+                    margin-top: 10px;
+                }
+                a{
+                    color:#fff !important;
+                    &:hover{
+                        color: #2196f3 !important;
+                    }
+                }
+                li.active{
+                    a{
+                        color: #2196f3 !important;
+                    }
+                }
+            }
+        }
+    }
     @media(min-width: @breakpoint-medium){
         .card-bottom{
             bottom:30px !important;

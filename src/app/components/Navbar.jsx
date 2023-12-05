@@ -1,7 +1,18 @@
 "use client";
-import React from 'react';
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { setLocale } from '../redux/reducers/localeSlice';
+import { fetchProjects } from '../redux/reducers/projectsSlice';
 
 export default function Navbar() {
+    const dispatch = useDispatch();
+    const locale = useSelector((state) => state.locale);
+    const [currentLang, setCurrentLang] = useState(locale);
+    const changeLanguage = (language) => {
+        setCurrentLang(language);
+        dispatch(setLocale('tr'));
+        dispatch(fetchProjects(language));
+    }
     return(
         <header data-uk-sticky>
             <nav className="uk-navbar-container uk-background-primary uk-navbar-sticky uk-position-relative" data-uk-navbar data-uk-scrollspy="cls: uk-animation-fade; delay:300;">
@@ -11,6 +22,15 @@ export default function Navbar() {
                 <div className="uk-navbar-right">
                     <div className="uk-navbar-item">
                         <a className="uk-link-reset uk-text-large" data-uk-icon="menu" data-uk-toggle="target: #offcanvas-nav"></a>
+                    </div>
+                    <div className='uk-navbar-item language-select'>
+                        <button type="button">{currentLang}</button>
+                        <div class="uk-card uk-card-default" uk-drop="mode: click">
+                            <ul>
+                                <li className={currentLang === "tr" ? 'active' : ''}><a className='uk-link-reset' onClick={() => changeLanguage('tr')}>TR</a></li>
+                                <li className={currentLang === "en" ? 'active' : ''}><a className='uk-link-reset' onClick={() => changeLanguage('en')}>EN</a></li>
+                            </ul>
+                        </div>
                     </div>
                     <div id="offcanvas-nav" data-uk-offcanvas="overlay: true; flip:true; esc-close:false;">
                         <button className="uk-offcanvas-close uk-text-large" type="button" data-uk-close></button>

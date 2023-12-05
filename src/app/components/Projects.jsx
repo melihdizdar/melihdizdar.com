@@ -1,11 +1,29 @@
 "use client";
-import React from 'react';
+import React, { useEffect } from 'react';
 import frontProjectsData from '../data/frontProjectsData';
 import fullProjectsData from '../data/fullProjectsData';
 import FrontProjectsCards from './FrontProjectsCards';
 import FStackProjectsCards from './FStackProjectsCards';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchProjects } from '../redux/reducers/projectsSlice';
 
 export default function Projects() {
+    const dispatch = useDispatch();
+    const locale = useSelector((state) => state.locale);
+    const projects = useSelector((state) => state.projects?.data.data);
+    const status = useSelector((state) => state.projects?.loading);
+    const error = useSelector((state) => state.projects?.error);
+    useEffect(() => {
+        if (status === 'idle') {
+            dispatch(fetchProjects(locale));
+        }
+    }, []);
+    if (status === 'loading') {
+        return <div>Loading...</div>;
+    }
+    if (status === 'failed') {
+        return <div>Error: {error}</div>;
+    }
     return(
         <section className="uk-background-primary" id="projects" data-uk-height-viewport="offset-top:true;">
             <div className="uk-section">
@@ -31,9 +49,14 @@ export default function Projects() {
                                 <div className="uk-position-relative" tabIndex="-1">
                                     <div className="uk-slider-container">
                                         <ul className="uk-slider-items uk-child-width-1-1 uk-child-width-1-2@s uk-child-width-1-3@m uk-child-width-1-4@l" data-uk-grid>
-                                            {frontProjectsData.map((frontCard) => (
-                                            <FrontProjectsCards key={frontCard._id} frontCard={frontCard}></FrontProjectsCards>
-                                            ))}
+                                            {projects?.map((frontCard) => {
+                                                if (frontCard.attributes.Type === 'Front-End') {
+                                                    return (
+                                                        <FrontProjectsCards key={frontCard.id} frontCard={frontCard.attributes}></FrontProjectsCards>
+                                                    );
+                                                }
+                                                return null;
+                                            })}
                                         </ul>
                                     </div>
                                     <div className="uk-position-bottom-center uk-position-small uk-hidden">
@@ -51,9 +74,14 @@ export default function Projects() {
                                 <div className="uk-position-relative" tabIndex="-1">
                                     <div className="uk-slider-container">
                                         <ul className="uk-slider-items uk-child-width-1-1 uk-child-width-1-2@s uk-child-width-1-3@m uk-child-width-1-4@l" data-uk-grid>
-                                            {fullProjectsData.map((fstackCard) => (
-                                            <FStackProjectsCards key={fstackCard._id} fstackCard={fstackCard}></FStackProjectsCards>
-                                            ))}
+                                            {projects?.map((fstackCard) => {
+                                                if (fstackCard.attributes.Type === 'Full Stack') {
+                                                    return (
+                                                        <FStackProjectsCards key={fstackCard.id} fstackCard={fstackCard.attributes}></FStackProjectsCards>
+                                                    );
+                                                }
+                                                return null;
+                                            })}
                                         </ul>
                                     </div>
                                     <div className="uk-position-bottom-center uk-position-small uk-hidden">
